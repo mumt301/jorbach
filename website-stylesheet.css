@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, Helvetica, sans-serif
+    background-color: purple
+    color: white
+    line-height: 20px;
+}
+
+h1{
+    font-size: 120px;
+    color: white
+}
+
+h2 {
+    font-size: 50px;
+    color: beige
+}
+.bio {
+    font-size: 100px;
+    color: white
+}
+
+#highlight1 {
+    color: burlywood
+}
+
+
+#highlight2 {
+    color: bisque
+}
+
+img {
+    width: 90%;
+    opacity: 0.25;
+    position: absolute;
+    left: 5px;
+    top: 55%;
+}
+
+ul li {
+    font-size: 40px;
+    list-style-type: none;
+    color: bisque
+}
+
