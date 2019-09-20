@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<title>Babe Rainbow Biography</title>
+	</head>
+	<body id="bio">
+	<a href="http://music.mcgill.ca/~keegan/thescript"><img class="center" src="TheBabeRainbowLogo"></a>
+
+		<div id="nav">
+		<ul>
+			<li><a href="../biography">Biography</a></li>
+			<li><a href="../discography">Discography</a></li>
+			<li><a href="../videos">Music</a></li>
+			<li><a href="../links">Links</a></li>
+		</ul>
+		</div>
+		<h2>
+			Biography
+		</h2>
+        <table>
+        <tr>
+        <td>
+        <p>
+		Hailing from the surf town of Byron Bay, Australia, The Babe Rainbow emerged in the mid-2010s, offering a lighter, flower-powered take on neo-psychedelia than some of their similarly influenced countrymen like King Gizzard & The Lizard Wizard or Psychedelic Port Crumpets.  <br><br>
+After gaining international exposure via 30th Century Records, they got to work delivering a trio of full-length records between 2017 and 2019. <br><br>
+</p>
+</td>
+<td>
+<p>
+The Babe Rainbow (not to be confused with Canadian electronic producer Babe Rainbow) first appeared in 2015 with a self-titled EP bearing cosmic, '60s-indebted nuggets like "Ash May & Dr. Love Wisdom" and the affable "Secret Enchanted Broccoli Forest." <br><br>
+After signing with Danger Mouse’s 30th Century Records, co-founders Angus Dowling (vocals, drums) and Jack "Cool-Breeze" Crowther (guitar), along with Venezuelan newcomer Lu-Lu-Felix Domingo (bass), embarked on an American tour with West Coast psych outfit the Allah-Las.<br><br>
+Returning home to Byron Bay, they worked with Stu Mackenzie (King Gizzard & The Lizard Wizard) to record their eponymous full-length debut, which arrived in the summer of 2017.. 
+A second helping, Double Rainbow, arrived a year later following in the same sonic footsteps. The Babes kept up their schedule in 2019 with Today, their third full-length in as many years." 
+<br><br>
+Source: AllMusic.com ~ Timothy Monger
+</p>
+        </td>
+        </tr>
+        </table>
+	</body>
+</html>
