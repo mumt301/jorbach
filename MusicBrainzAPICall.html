@@ -1,0 +1,68 @@
+<html>
+
+    <head>
+        <title>Musicbrainz API call</title>
+        <link rel="stylesheet" href="https://minicss.org/flavorFiles/mini-default.css">
+        <!-- <link rel="stylesheet" href="https://minicss.org/flavorFiles/mini-dark.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    </head>
+
+<body>
+        
+        <div>
+            <h2>MusicBrainz API Call Assignment</h2>
+            <p>Retrieve album information for a given user-entered artist</p>
+    
+            <form id="artist"> Artist name?
+                <input type="text" name="artist">
+                <input type="button" onclick="artistMBIDRetriever()" value="Retrieve albums!">
+            </form>
+        </div>
+    
+    
+        <div id="artistOutput"></div>
+    
+        <script>
+            function httpGet(theUrl) {
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.open("GET", theUrl, false);
+                xmlHttp.send();
+                return xmlHttp.responseXML;
+            }
+    
+            function artistMBIDRetriever() {
+                // Retrieve the data from the form
+                artistName = document.getElementById("artist")
+                artistnameForm = document.getElementById("artist");
+                artistName = artistnameForm.elements["artist"].value;
+    
+                // Create the MB call
+                mbBaseURL = "https://musicbrainz.org/ws/2/";
+                mbResource = "artist?query=";
+                queryURL = mbBaseURL + mbResource + artistName;
+                // console.log(queryURL);
+                retrievedData = httpGet(queryURL);
+                // console.log(retrievedData)
+    
+                // Parse the response from MB
+                artistData = retrievedData.getElementsByTagName("artist")[0];
+                artistMBID = artistData.id;
+                // console.log(artistMBID);
+                artistDocument = retrievedData.getElementById(artistMBID)
+                artistName = artistDocument.getElementsByTagName("name")[0].innerHTML;
+                artistCountry = artistDocument.getElementsByTagName("country")[0].innerHTML;
+                console.log(artistName, artistCountry);
+    
+                // Rendering the results
+                document.getElementById("artistOutput").innerHTML = artistName + " is from " + artistCountry + " and their MBID is " +  artistMBID;
+    
+    
+    
+            }
+    
+        </script>
+    
+
+    </div>
+</body>
+</html>
