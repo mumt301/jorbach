@@ -35,6 +35,9 @@
                 artistName = document.getElementById("artist")
                 artistnameForm = document.getElementById("artist");
                 artistName = artistnameForm.elements["artist"].value;
+                artistRelease = document.getElementsByTagName("release")
+                artistreleaseForm = document.getElementsByTagName("release");
+
     
                 // Create the MB call
                 mbBaseURL = "https://musicbrainz.org/ws/2/";
@@ -47,14 +50,25 @@
                 // Parse the response from MB
                 artistData = retrievedData.getElementsByTagName("artist")[0];
                 artistMBID = artistData.id;
+
+                release = retrievedData.getElementsByTagName("release-group")[5];
+                releaseData = artistMBID + release
+
                 // console.log(artistMBID);
                 artistDocument = retrievedData.getElementById(artistMBID)
                 artistName = artistDocument.getElementsByTagName("name")[0].innerHTML;
-                artistCountry = artistDocument.getElementsByTagName("country")[0].innerHTML;
-                console.log(artistName, artistCountry);
+                artistRelease = artistDocument.getElementsByTagName("release");
+
+        
+                console.log(artistRelease, Date);
+                
+
+
+                // inc=release+releasegroups
     
                 // Rendering the results
-                document.getElementById("artistOutput").innerHTML = artistName + " is from " + artistCountry + " and their MBID is " +  artistMBID;
+                document.getElementById("artistOutput").innerHTML = artistName + " release " + release + " on " + Date;
+                // document.getElementById("artistOutput").innerHTML = artistName + " and their MBID is " +  artistMBID;
     
     
     
@@ -66,3 +80,5 @@
     </div>
 </body>
 </html>
+
+
