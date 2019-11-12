@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>MusicBrainz API Call</title>
+    </head>
+    <body>
+        <h2>Basic call to to the MusicBrainz API</h1>
+        <h3>Retrieve the MusicBrainz UD for any user-entered artist name</h2>
+
+        <form id="artist">Artist Name?
+            <input type="text" name="artistname"><br>
+            <input type="button" value="Retrieive ID!" onclick="artistMBIDRetriever()">
+            </form>
+            
+
+            <p id="artistOutput"></p>
+
+            <script>
+                function httpGet(theURL) {
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.open("GET", theURL, false);
+                    xmlHttp.send();
+                    return xmlHttp.responseXML;
+                }
+
+
+                function artistMBIDRetriever() {
+                    // Retrieve the data from the form
+                    artistForm = document.getElementById ("artist");
+                    artistName = artistForm.elements ["artistname"].value;
+
+    
+                    // Create the MB Call. The MB API states that it should follow this syntax 
+                    // https:musicbrainz.org/ws/2/artist/?query=artistName
+
+                    mbBaseURL = "https://musicbrainz.org/ws/2/artist/?query=artistName";
+                    mbResource = "artist?query=";
+                    queryURL = mbBaseURL + mbResource + artistName;
+                    console.log(queryURL)
+
+                    // Parse the MB response to get the ID
+                    retrievedData = httpGet(queryURL);
+                    console.log(retrievedData)
+
+                    artistData = retrievedData.getElementsByTagName("artist")[0];
+                    console.log(artistData)
+                    artistMBID = artistData.id;
+                    
+                    artistCountry = retreivedData.getElementsByTagName ("country") [0].innerHTML;
+
+                    document.getElementsByTagName("artistoutput").innerHTML = artistName + " is from " + artistCountry + "and their MBID is " + artistMBID;
+
+                    document.getElementByID("artistOutput").innerHTML = artistMBID;
+
+
+
+                }
+
+            </script>
+    </body>
+</html>
