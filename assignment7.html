@@ -1,0 +1,91 @@
+<html>
+    <head>
+        <title>Assignment 7 - API Mash-Up</title>
+        <link rel="stylesheet" href="https://minicss.org/flavorFiles/mini-default.css">
+        <!-- <link rel="stylesheet" href="https://minicss.org/flavorFiles/mini-dark.css"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+            
+    </head>
+    <body>
+        <h1>
+            Obtain artist information
+        </h1>
+        <form id="queryForm">
+            <h2>Artist Name:
+            <input type="text" name="artistName">
+            <input type="button" onclick="queryCall()" value="Submit">
+        </h2>
+        </form>
+    
+        <h2 id= "retrievedBio"></h2>
+
+        <table id="recommendations"></table>
+
+    <script>
+
+
+
+    function queryCall() {
+        // Getting artist name from the form
+        x = document.getElementById("queryForm");
+        artName = x.elements["artistName"].value;
+
+        // Creating API Call
+        apiKey = "7cc8ddb121ee9a9cb515b7d377fa31a9"
+        queryURL = "https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=" + artName + "&api_key=" + apiKey;
+        retrievedData = httpGet(queryURL);
+        console.log(retrievedData);
+
+        // Parsing the response through API
+        artistMBID = retrievedData.getElementsByTagName("mbid")[0].innerHTML;
+
+        bioContent = retrievedData.getElementsByTagName("content")[0].innerHTML;
+        console.log(bioContent);
+
+        queryURL = "https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid=" + artistMBID + "&api_key=" + apiKey;
+        retrievedData = httpGet(queryURL);
+        imageURL = retrievedData.getElementsByTagName("image")[3].innerHTML;
+
+        // Append the results to the DOM
+        bio = document.createElement("p");
+        bio.innerHTML = bioContent;
+
+        image = document.createElement("img");
+        image.src = imageURL;
+
+
+        infobox = document.createElement("div");
+        infobox.id = "bioContainer";
+        infobox.appendChild(image);
+        infobox.appendChild(bio);
+        console.log(infobox);
+
+        document.getElementById("retrievedBio").innerHTML = "";
+        document.getElementById("retrievedBio").appendChild(infobox);
+
+        // Creating Recommendation Call
+
+        apiKey = "7cc8ddb121ee9a9cb515b7d377fa31a9"
+        queryURL = "https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artName + "&api_key=" + apiKey;
+        retrievedData = httpGet(queryURL);
+        console.log(retrievedData)
+ 
+
+        // Parse response from Album 
+        artistRecommendation = retrievedData.getElementsByTagName("similar")[4];
+
+
+
+                function httpGet(theUrl) {
+                var xmlHttp = new XMLHttpRequest();
+                xmlHttp.open("GET", theUrl, false);
+                xmlHttp.send();
+                return xmlHttp.responseXML;
+
+                }
+    }
+    
+    </script>
+
+    </body>
+</html>
