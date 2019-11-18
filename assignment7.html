@@ -69,12 +69,11 @@
         queryURL = "https://ws.audioscrobbler.com/2.0/?method=artist.getsimilar&artist=" + artName + "&api_key=" + apiKey;
         retrievedData = httpGet(queryURL);
         console.log(retrievedData)
- 
+
 
         // Parse response from Album 
-        artistRecommendation = retrievedData.getElementsByTagName("similar")[4];
-
-
+        artistRecommendation = retrievedData.getElementsByTagName("name")[3];
+        console.log(artistRecommendation)
 
                 function httpGet(theUrl) {
                 var xmlHttp = new XMLHttpRequest();
